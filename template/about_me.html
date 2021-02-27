@@ -1,0 +1,55 @@
+<!DOCTYPE html> {% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>about_me</title>
+    <link rel="stylesheet" href="{% static 'css/blog_style.css' %}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a href="{%url 'index'%}" class="navbar-brand">নির্জনের ব্লগ</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{%url 'index'%}">Home</a>
+                </li>
+                <li>
+                    <a href="{%url 'content_list'%}">Content List</a>
+                </li>
+                <li>
+                    <a href="{%url 'about_me'%}">About Me</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <div style="display: flex; justify-content: center; align-items: center; ">
+        <img src="{% static 'images/pic6.jpg' %}" alt="">
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+
+            <p>Name : Nirjon Sarker</p>
+            <p>School Name : Premair Ideal High School</p>
+            <p>College Name : Agricultural University College</p>
+            <p>University Name : Comilla University,Comilla</p>
+            <P>BSC Engineering in Information & Communication Technology.(ICT)</P>
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

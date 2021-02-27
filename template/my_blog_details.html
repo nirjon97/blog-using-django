@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a href="{%url 'index'%}" class="navbar-brand">নির্জনের ব্লগ</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{%url 'index'%}">Home</a>
+                </li>
+                <li>
+                    <a href="{%url 'content_list'%}">Language List</a>
+                </li>
+                <li>
+                    <a href="{%url 'about_me'%}">About Me</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+    <table align="center" border="1" width="700px">
+        <div class="container">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="jumbotron">
+
+                            <h1>{{queryset_list.title}}</h1>
+
+                            <hr>
+                            <h2>{{queryset_list.create_time}}</h2>
+                            <hr> {{queryset_list.content}}
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </table>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h2 align="center">Comments</h2>
+            
+           <form method="POST" style="margin-top: 1.3em;">
+              {{ comment_form.as_p }}
+              {% csrf_token %}
+               <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+           </form>
+
+
+            <h3 align="center" class="well" style="background-color:Gray;"><b>people's comment</b></h3>
+            <div class="well">
+               <div class="single_post_comment">
+                {% for comment in comments %}
+               <div class="comments" style="padding: 10px;">
+                <p class="font-weight-bold">
+                  {{ comment.name }}
+                 <span class=" text-muted font-weight-normal">
+                   {{ comment.created_on }}
+                 </span>
+                </p>
+                  {{ comment.body | linebreaks }}
+                 </div>
+
+                {% empty %}
+                  <h3>sorry,no comment found</h3>
+
+                {% endfor %}
+               </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

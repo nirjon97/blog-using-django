@@ -1,0 +1,63 @@
+<!DOCTYPE html> {% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Language_list</title>
+    <link rel="stylesheet" href="{% static 'css/blog_style.css' %}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a href="{%url 'index'%}" class="navbar-brand">নির্জনের ব্লগ</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{%url 'index'%}">Home</a>
+                </li>
+                <li>
+                    <a href="{%url 'content_list' %}">Content List</a>
+                </li>
+                <li>
+                    <a href="{%url 'about_me' %}">About Me</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <table align="center" border="1" width="700px">
+        {% for obj in queryset_list %}
+        <div class="container">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="jumbotron">
+                            <a href="{%url 'details' id=obj.id%}">
+                                <h1>{{obj.title}}</h1>
+                            </a>
+                            <hr>
+                            <h2>{{obj.create_time}}</h2>
+
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </table>
+
+</body>
+
+</html>
